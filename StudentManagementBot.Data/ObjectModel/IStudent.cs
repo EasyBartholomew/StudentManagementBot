@@ -13,9 +13,9 @@ namespace StudentManagementBot.Data.ObjectModel
         string Name { get; set; }
 
         string Patronymic { get; set; }
-                
-        int? UserId { get; set; }
-                
+
+        long? UserId { get; set; }
+
         IReadOnlyList<IRole> Roles { get; }
 
         bool AddRole(IRole studentRole);

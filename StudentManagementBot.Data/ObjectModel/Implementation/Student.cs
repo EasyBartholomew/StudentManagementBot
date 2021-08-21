@@ -15,7 +15,7 @@ namespace StudentManagementBot.Data.ObjectModel.Implementation
         private string _name;
         private string _patronymic;
 
-        
+
         [NotNull]
         [Length(2, 50, Message = "Фамилия должна содержать от двух до пятидесяти символов!")]
         public virtual string Surname
@@ -33,7 +33,7 @@ namespace StudentManagementBot.Data.ObjectModel.Implementation
 
             set => this._name = value.FormatPersonalData();
         }
-                
+
         [Length(2, 50, Message = "Отчество должно содержать от двух до пятидесяти символов!")]
         public virtual string Patronymic
         {
@@ -41,15 +41,15 @@ namespace StudentManagementBot.Data.ObjectModel.Implementation
 
             set => this._patronymic = value?.FormatPersonalData();
         }
-        
-        public virtual int? UserId { get; set; }
-         
+
+        public virtual long? UserId { get; set; }
+
         [NotNull]
         [Size(0, 10, Message = "Студент не может иметь более 10 ролей!")]
         public virtual IList<Role> Roles { get; set; }
 
         IReadOnlyList<IRole> IStudent.Roles => this.Roles.AsEnumerable().ToList();
-        
+
         public Student(StudyGroup group, string surname, string name, string patronymic = null) : base(group)
         {
 
